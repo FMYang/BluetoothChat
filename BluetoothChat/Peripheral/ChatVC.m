@@ -30,6 +30,10 @@ UIKIT_STATIC_INLINE UIColor *ZYColorWithHex(NSInteger s) { return [UIColor color
     self.title = @"Chat";
     [self makeUI];
     [self addNoti];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollToBottom];
+    });
 }
 
 - (void)addNoti {
