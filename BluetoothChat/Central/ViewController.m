@@ -37,6 +37,8 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
 @property (nonatomic, strong) CBCharacteristic *resendCharacteristic;
 @property (nonatomic, strong) ChatVC *chatVC;
 
+@property (nonatomic) ConnectState connectState;
+
 @end
 
 @implementation ViewController
@@ -46,6 +48,24 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
     self.title = @"Central";
     [self makeUI];
     _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Chat" style:UIBarButtonItemStylePlain target:self action:@selector(chatAction)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+}
+
+- (void)chatAction {
+    [self gotoChat];
+}
+
+- (void)gotoChat {
+    self.chatVC = [[ChatVC alloc] init];
+    __weak ViewController *weakSelf = self;
+    self.chatVC.sendData = ^(NSString * _Nonnull message) {
+        __strong ViewController *strongSelf = weakSelf;
+        NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
+        [strongSelf.peripheral writeValue:data forCharacteristic:strongSelf.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    };
+    [self.navigationController pushViewController:self.chatVC animated:YES];
 }
 
 - (BOOL)existPeripheral:(CBPeripheral *)peripheral {
@@ -83,28 +103,24 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     // 连接成功
     NSLog(@"fm 连接成功");
+    self.connectState = ConnectStateConnected;
     [self.centralManager stopScan];
     [peripheral discoverServices:nil];
     [self.tableView reloadData];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.chatVC = [[ChatVC alloc] init];
-        __weak ViewController *weakSelf = self;
-        self.chatVC.sendData = ^(NSString * _Nonnull message) {
-            __strong ViewController *strongSelf = weakSelf;
-            NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
-            [strongSelf.peripheral writeValue:data forCharacteristic:strongSelf.writeCharacteristic type:CBCharacteristicWriteWithResponse];
-        };
-        [self.navigationController pushViewController:self.chatVC animated:YES];
+        [self gotoChat];
     });
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    self.connectState = ConnectStateReady;
     NSLog(@"fm 连接设备失败");
     [self.tableView reloadData];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    self.connectState = ConnectStateDisConnected;
     NSLog(@"fm 断开连接");
     [self.tableView reloadData];
 }
@@ -217,6 +233,11 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
         _peripheralList = @[].mutableCopy;
     }
     return _peripheralList;
+}
+
+- (void)setConnectState:(ConnectState)connectState {
+    _connectState = connectState;
+    self.navigationItem.rightBarButtonItem.enabled = (connectState == ConnectStateConnected);
 }
 
 @end

@@ -40,6 +40,26 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
     self.title = @"Peripheral";
     [self makeUI];
     [self makeService];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Chat" style:UIBarButtonItemStylePlain target:self action:@selector(chatAction)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+}
+
+- (void)chatAction {
+    [self gotoChat];
+}
+
+- (void)gotoChat {
+    self.chatVC = [[ChatVC alloc] init];
+    __weak ViewController *weakself = self;
+    self.chatVC.sendData = ^(NSString * _Nonnull message) {
+        __strong ViewController *strongSelf = weakself;
+        if (self.connectState == ConnectStateConnected) {
+            NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
+            [strongSelf.peripheralManager updateValue:data forCharacteristic:strongSelf.characteristic onSubscribedCentrals:@[strongSelf.central]];
+        }
+    };
+    [self.navigationController pushViewController:self.chatVC animated:YES];
 }
 
 - (void)makeUI {
@@ -117,17 +137,7 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
             self.central = central;
             
             self.connectState = ConnectStateConnected;
-            
-            self.chatVC = [[ChatVC alloc] init];
-            __weak ViewController *weakself = self;
-            self.chatVC.sendData = ^(NSString * _Nonnull message) {
-                __strong ViewController *strongSelf = weakself;
-                if (self.connectState == ConnectStateConnected) {
-                    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
-                    [strongSelf.peripheralManager updateValue:data forCharacteristic:strongSelf.characteristic onSubscribedCentrals:@[strongSelf.central]];
-                }
-            };
-            [self.navigationController pushViewController:self.chatVC animated:YES];
+            [self gotoChat];
         }
     }];
     
@@ -142,6 +152,7 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
 #pragma mark -
 - (void)setConnectState:(ConnectState)connectState {
     _connectState = connectState;
+    self.navigationItem.rightBarButtonItem.enabled = (connectState == ConnectStateConnected);
     switch (connectState) {
         case ConnectStateReady:
             self.stateLabel.text = @"等待连接";
@@ -167,14 +178,6 @@ typedef NS_ENUM(NSUInteger, ConnectState) {
         _stateLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _stateLabel;
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    ChatVC *chatVC = [[ChatVC alloc] init];
-    chatVC.sendData = ^(NSString * _Nonnull message) {
-      //
-    };
-    [self.navigationController pushViewController:chatVC animated:YES];
 }
 
 @end
