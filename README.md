@@ -2,4 +2,4 @@
 
 效果图：
 
-![](https://github.com/FMYang/BluetoothChat/blob/main/BluetoothChat/blue.gif)
+![](https://github.com/FMYang/BluetoothChat/blob/main/blue.gif)
