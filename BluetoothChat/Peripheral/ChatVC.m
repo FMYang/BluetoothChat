@@ -8,7 +8,8 @@
 #import "ChatVC.h"
 #import <Masonry/Masonry.h>
 #import "MessageManager.h"
-#import "MessageCell.h"
+#import "ReceivedCell.h"
+#import "SendCell.h"
 
 UIKIT_STATIC_INLINE UIColor *ZYColorWithHex(NSInteger s) { return [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0 green:(((s & 0xFF00) >> 8)) / 255.0 blue:((s &0xFF))/255.0 alpha:1.0]; }
 
@@ -89,9 +90,15 @@ UIKIT_STATIC_INLINE UIColor *ZYColorWithHex(NSInteger s) { return [UIColor color
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Message *message = MessageManager.shared.messages[indexPath.row];
-    MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    [cell config:message];
-    return cell;
+    if (message.type == MessageTypeSend) {
+        SendCell *cell = (SendCell *)[tableView dequeueReusableCellWithIdentifier:@"sendCell" forIndexPath:indexPath];
+        [cell config:message];
+        return cell;
+    } else {
+        ReceivedCell *cell = (ReceivedCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        [cell config:message];
+        return cell;
+    }
 }
 
 #pragma mark -
@@ -165,7 +172,10 @@ UIKIT_STATIC_INLINE UIColor *ZYColorWithHex(NSInteger s) { return [UIColor color
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:MessageCell.class forCellReuseIdentifier:@"cell"];
+        _tableView.estimatedRowHeight = 50;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
+        [_tableView registerClass:ReceivedCell.class forCellReuseIdentifier:@"cell"];
+        [_tableView registerClass:SendCell.class forCellReuseIdentifier:@"sendCell"];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
         [_tableView addGestureRecognizer:tap];

@@ -1,8 +1,8 @@
 //
-//  MessageCell.h
+//  SendCell.h
 //  Peripheral
 //
-//  Created by yfm on 2024/5/24.
+//  Created by yfm on 2024/5/29.
 //
 
 #import <UIKit/UIKit.h>
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MessageCell : UITableViewCell
+@interface SendCell : UITableViewCell
 
 - (void)config:(Message *)message;
 

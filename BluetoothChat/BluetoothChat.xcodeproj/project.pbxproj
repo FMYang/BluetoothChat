@@ -32,10 +32,12 @@
 		88095F382BFF3694008D6B1F /* BabyBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 88095F2E2BFF3694008D6B1F /* BabyBluetooth.m */; };
 		88095F392BFF3694008D6B1F /* BabyDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 88095F2F2BFF3694008D6B1F /* BabyDefine.m */; };
 		88095F3C2BFF3CF5008D6B1F /* ChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88095F3B2BFF3CF5008D6B1F /* ChatVC.m */; };
+		88379EA52C06DC7400977092 /* SendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88379EA42C06DC7400977092 /* SendCell.m */; };
+		88379EAA2C06E04E00977092 /* ReceivedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88379EA72C06E04E00977092 /* ReceivedCell.m */; };
+		88379EAB2C06E04E00977092 /* SendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88379EA92C06E04E00977092 /* SendCell.m */; };
 		88B549092C00366000B30752 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B549082C00366000B30752 /* MessageManager.m */; };
-		88B5490C2C00387C00B30752 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B5490B2C00387C00B30752 /* MessageCell.m */; };
+		88B5490C2C00387C00B30752 /* ReceivedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B5490B2C00387C00B30752 /* ReceivedCell.m */; };
 		88B549132C00434C00B30752 /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B5490D2C00434B00B30752 /* MessageManager.m */; };
-		88B549142C00434C00B30752 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B5490F2C00434B00B30752 /* MessageCell.m */; };
 		88B549152C00434C00B30752 /* ChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B549102C00434B00B30752 /* ChatVC.m */; };
 		88B549182C00455200B30752 /* FMListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B549162C00455200B30752 /* FMListCell.m */; };
 		E83FD073E69A2C54EC21F95C /* Pods_Central.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC2A4AF78B5B133747FFEF7 /* Pods_Central.framework */; };
@@ -89,16 +91,20 @@
 		88095F302BFF3694008D6B1F /* BabyCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCallback.h; sourceTree = "<group>"; };
 		88095F3A2BFF3CF5008D6B1F /* ChatVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatVC.h; sourceTree = "<group>"; };
 		88095F3B2BFF3CF5008D6B1F /* ChatVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatVC.m; sourceTree = "<group>"; };
+		88379EA32C06DC7400977092 /* SendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendCell.h; sourceTree = "<group>"; };
+		88379EA42C06DC7400977092 /* SendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendCell.m; sourceTree = "<group>"; };
+		88379EA62C06E04E00977092 /* SendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCell.h; sourceTree = "<group>"; };
+		88379EA72C06E04E00977092 /* ReceivedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivedCell.m; sourceTree = "<group>"; };
+		88379EA82C06E04E00977092 /* ReceivedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivedCell.h; sourceTree = "<group>"; };
+		88379EA92C06E04E00977092 /* SendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCell.m; sourceTree = "<group>"; };
 		88B549072C00366000B30752 /* MessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
 		88B549082C00366000B30752 /* MessageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
-		88B5490A2C00387C00B30752 /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
-		88B5490B2C00387C00B30752 /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		88B5490A2C00387C00B30752 /* ReceivedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceivedCell.h; sourceTree = "<group>"; };
+		88B5490B2C00387C00B30752 /* ReceivedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceivedCell.m; sourceTree = "<group>"; };
 		88B5490D2C00434B00B30752 /* MessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
 		88B5490E2C00434B00B30752 /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
-		88B5490F2C00434B00B30752 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		88B549102C00434B00B30752 /* ChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatVC.m; sourceTree = "<group>"; };
 		88B549112C00434C00B30752 /* ChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatVC.h; sourceTree = "<group>"; };
-		88B549122C00434C00B30752 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		88B549162C00455200B30752 /* FMListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMListCell.m; sourceTree = "<group>"; };
 		88B549172C00455200B30752 /* FMListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMListCell.h; sourceTree = "<group>"; };
 		92B437964E1038ED7E879112 /* Pods-Central.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Central.debug.xcconfig"; path = "Target Support Files/Pods-Central/Pods-Central.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,8 +171,10 @@
 				88095F3B2BFF3CF5008D6B1F /* ChatVC.m */,
 				88B549072C00366000B30752 /* MessageManager.h */,
 				88B549082C00366000B30752 /* MessageManager.m */,
-				88B5490A2C00387C00B30752 /* MessageCell.h */,
-				88B5490B2C00387C00B30752 /* MessageCell.m */,
+				88B5490A2C00387C00B30752 /* ReceivedCell.h */,
+				88B5490B2C00387C00B30752 /* ReceivedCell.m */,
+				88379EA32C06DC7400977092 /* SendCell.h */,
+				88379EA42C06DC7400977092 /* SendCell.m */,
 			);
 			path = Peripheral;
 			sourceTree = "<group>";
@@ -187,10 +195,12 @@
 				88095F192BFF35B1008D6B1F /* main.m */,
 				88B549112C00434C00B30752 /* ChatVC.h */,
 				88B549102C00434B00B30752 /* ChatVC.m */,
-				88B549122C00434C00B30752 /* MessageCell.h */,
-				88B5490F2C00434B00B30752 /* MessageCell.m */,
 				88B5490E2C00434B00B30752 /* MessageManager.h */,
 				88B5490D2C00434B00B30752 /* MessageManager.m */,
+				88379EA82C06E04E00977092 /* ReceivedCell.h */,
+				88379EA72C06E04E00977092 /* ReceivedCell.m */,
+				88379EA62C06E04E00977092 /* SendCell.h */,
+				88379EA92C06E04E00977092 /* SendCell.m */,
 				88B549172C00455200B30752 /* FMListCell.h */,
 				88B549162C00455200B30752 /* FMListCell.m */,
 			);
@@ -428,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88379EA52C06DC7400977092 /* SendCell.m in Sources */,
 				88095F312BFF3694008D6B1F /* BabyToy.m in Sources */,
 				88095EF22BFF357E008D6B1F /* ViewController.m in Sources */,
 				88095EEC2BFF357E008D6B1F /* AppDelegate.m in Sources */,
@@ -441,7 +452,7 @@
 				88095F362BFF3694008D6B1F /* BabySpeaker.m in Sources */,
 				88095F332BFF3694008D6B1F /* BabyCallback.m in Sources */,
 				88095F372BFF3694008D6B1F /* BabyRhythm.m in Sources */,
-				88B5490C2C00387C00B30752 /* MessageCell.m in Sources */,
+				88B5490C2C00387C00B30752 /* ReceivedCell.m in Sources */,
 				88B549092C00366000B30752 /* MessageManager.m in Sources */,
 				88095F342BFF3694008D6B1F /* BabyPeripheralManager.m in Sources */,
 			);
@@ -451,12 +462,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88379EAA2C06E04E00977092 /* ReceivedCell.m in Sources */,
 				88095F0F2BFF35B1008D6B1F /* ViewController.m in Sources */,
 				88095F092BFF35B1008D6B1F /* AppDelegate.m in Sources */,
 				88095F1A2BFF35B1008D6B1F /* main.m in Sources */,
-				88B549142C00434C00B30752 /* MessageCell.m in Sources */,
 				88B549152C00434C00B30752 /* ChatVC.m in Sources */,
 				88B549132C00434C00B30752 /* MessageManager.m in Sources */,
+				88379EAB2C06E04E00977092 /* SendCell.m in Sources */,
 				88B549182C00455200B30752 /* FMListCell.m in Sources */,
 				88095F0C2BFF35B1008D6B1F /* SceneDelegate.m in Sources */,
 			);
