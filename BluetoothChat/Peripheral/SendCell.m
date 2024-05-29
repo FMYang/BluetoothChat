@@ -58,7 +58,6 @@
     if(!_sendLabel) {
         _sendLabel = [[UILabel alloc] init];
         _sendLabel.textColor = UIColor.blackColor;
-        _sendLabel.textAlignment = NSTextAlignmentRight;
         _sendLabel.font = [UIFont systemFontOfSize:15];
         _sendLabel.numberOfLines = 0;
     }
